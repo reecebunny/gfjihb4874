@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bunnytown</title>
+  <title>bunnytown.xyz</title>
   <style>
     /* Basic reset */
     body {
@@ -86,7 +86,7 @@
 </head>
 <body>
 <div class="container">
-  <img id="logo" src="logo.png" alt="bunnytown Logo" />
+  <img id="logo" src="logo.png" alt="Bunnytown Logo" />
 
   <div style="display: flex; flex-direction: column; align-items: center;">
     <div class="box" id="copyBox" onclick="copyToClipboard()">
@@ -103,90 +103,97 @@
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.bundle.min.js"></script>
   
-  <script>
-    tsParticles.load("tsparticles", {
-      particles: {
-        number: {
-          value: 80,
-          density: {
-            enable: true,
-            area: 800
-          }
-        },
-        color: {
-          value: {
-            value: "#ff0000",
-            animation: {
-              enable: true,
-              speed: 50,
-              sync: false
-            }
-          }
-        },
-        shape: {
-          type: "circle"
-        },
-        opacity: {
-          value: 0.5,
-          random: true,
-          animation: {
-            enable: true,
-            speed: 1,
-            minimumValue: 0.1,
-            sync: false
-          }
-        },
-        size: {
-          value: 3,
-          random: true
-        },
-        links: {
+<script>
+  function getRandomPastelColor() {
+    const hue = Math.floor(Math.random() * 360);
+    return `hsl(${hue}, 100%, 85%)`;
+  }
+
+  const pastelLinkColor = getRandomPastelColor();
+
+  tsParticles.load("tsparticles", {
+    particles: {
+      number: {
+        value: 70,
+        density: {
           enable: true,
-          distance: 150,
-          color: "#ffffff",
-          opacity: 0.4,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 2,
-          direction: "none",
-          outModes: "out"
+          area: 700
         }
       },
-      interactivity: {
-        events: {
-          onHover: {
+      color: {
+        value: {
+          value: "#ffbbff",
+          animation: {
             enable: true,
-            mode: "repulse"
-          },
-          onClick: {
-            enable: true,
-            mode: "push"
-          }
-        },
-        modes: {
-          repulse: {
-            distance: 100,
-            duration: 0.4
-          },
-          push: {
-            quantity: 4
+            speed: 50,
+            sync: false
           }
         }
+      },
+      shape: {
+        type: "circle"
+      },
+      opacity: {
+        value: 0.5,
+        random: true,
+        animation: {
+          enable: true,
+          speed: 1,
+          minimumValue: 0.1,
+          sync: false
+        }
+      },
+      size: {
+        value: 3,
+        random: true
+      },
+      links: {
+        enable: true,
+        distance: 150,
+        color: pastelLinkColor,
+        opacity: 0.4,
+        width: 2.5
+      },
+      move: {
+        enable: true,
+        speed: 2,
+        direction: "none",
+        outModes: "out"
       }
-    });
-
-    function copyToClipboard() {
-      const text = document.getElementById("serverAddress").innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const msg = document.getElementById("copiedMessage");
-        msg.style.opacity = 1;
-        setTimeout(() => {
-          msg.style.opacity = 0;
-        }, 1500);
-      });
+    },
+    interactivity: {
+      events: {
+        onHover: {
+          enable: true,
+          mode: "repulse"
+        },
+        onClick: {
+          enable: true,
+          mode: "push"
+        }
+      },
+      modes: {
+        repulse: {
+          distance: 70,
+          duration: 0.4
+        },
+        push: {
+          quantity: 4
+        }
+      }
     }
-  </script>
+  });
+
+  function copyToClipboard() {
+    const text = document.getElementById("serverAddress").innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const msg = document.getElementById("copiedMessage");
+      msg.style.opacity = 1;
+      setTimeout(() => {
+        msg.style.opacity = 0;
+      }, 1500);
+    });
+  }
+</script>
 </body>
 </html>
